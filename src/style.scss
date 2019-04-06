@@ -1,0 +1,8 @@
+@function color($color-name) {
+  @return var(--color-#{$color-name});
+}
+:root {
+  --color-main: #0000FF;
+  --color-completed: #DAA520;
+}
+
