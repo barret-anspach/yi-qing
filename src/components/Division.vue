@@ -45,6 +45,9 @@
   @import './../style.scss';
   $square: calc(100vmin - 5vmax);
   $ease: ease-out;
+  .division {
+    z-index: 1;
+  }
   .yarrow-stalks {
     z-index: -1;
     display: flex;

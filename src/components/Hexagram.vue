@@ -70,4 +70,11 @@
     opacity: 0;
     transform: translateX(100%);
   }
+  .hexagram /deep/ .line.changing:last-of-type:before {
+    content: '';
+    position: absolute;
+    display: block;
+    /*top: 0;*/
+    /*translate(0, -100%);*/
+  }
 </style>

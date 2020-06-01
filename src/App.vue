@@ -36,12 +36,12 @@
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     border: 0.5vmax solid color(main);
     margin: 1vmax;
-    height: 100%;
-    min-height: calc(100vh - 2vmax);
+    height: calc(100vh - 2vmax);
+    min-height: 100%;
     font-family: 'Brandon Grotesque', brandon-grotesque, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -49,6 +49,7 @@
     text-align: center;
     color: color(main);
     will-change: border-color, color;
+    overflow-y: scroll;
   }
   #app.completed {
     border-color: color(main);
@@ -70,11 +71,11 @@
     }
   }
   #nav {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-flow: row-reverse;
-    bottom: 0;
-    right: 0;
+    bottom: 1.5vmax;
+    right: 1.5vmax;
     a {
       cursor: pointer;
       position: relative;

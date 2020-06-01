@@ -46,7 +46,6 @@
   @import './../style.scss';
   .message {
     z-index: 5;
-    mix-blend-mode: color;
     color: color(main);
     margin: 5vmax;
     line-height: 1;

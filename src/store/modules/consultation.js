@@ -96,7 +96,6 @@ const actions = {
                     return t.sequence.toString().startsWith(_seqString)
                 })
                 .map(t => Color(t.color))
-            window.console.log('_matchTrigrams:\n', _matchTrigrams)
             _color = _matchTrigrams.reduce((acc, c) => acc.mix(c, 1 / _matchTrigrams.length), _color)
         }
         // TODO: #app.style.setProperty('--color-main', ##NEW COLOR)
