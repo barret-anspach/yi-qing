@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{'completed': isCompleted}">
+  <div id="app" :class="{'completed': isCompletelyCompleted}">
     <router-view/>
   </div>
 </template>
@@ -12,12 +12,35 @@
           ...mapGetters([
               'isCompleted',
               'color'
-          ])
+          ]),
+          isCompletelyCompleted() {
+              return this.isCompleted && this.$route.name === "result"
+          },
+          orientation() {
+              return window.matchMedia("(orientation: portrait)")
+          }
+      },
+      methods: {
+          setAppHeight() {
+              this.$el.style.setProperty('height', `calc(${window.innerHeight}px - 2vmax)`);
+          }
       },
       watch: {
           color(val) {
               this.$el.style.setProperty('--main-color', val)
+          },
+          orientation(n, o) {
+              if (n !== o) this.setAppHeight()
           }
+      },
+      mounted() {
+          this.setAppHeight();
+          window.addEventListener('resize', this.setAppHeight, false);
+          window.addEventListener('orientationchange', this.setAppHeight, false);
+      },
+      beforeDestroy() {
+          window.removeEventListener('resize', this.setAppHeight, false);
+          window.removeEventListener('orientationchange', this.setAppHeight, false);
       }
   }
 </script>
@@ -40,7 +63,7 @@
     align-items: center;
     border: 0.5vmax solid color(main);
     margin: 1vmax;
-    height: calc(100vh - 2vmax);
+    height: calc(100vh - 2vmax); // Overridden by js
     min-height: 100%;
     font-family: 'Brandon Grotesque', brandon-grotesque, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
