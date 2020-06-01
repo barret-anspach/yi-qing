@@ -36,8 +36,8 @@
     position: relative;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     border: 0.5vmax solid color(main);
     margin: 1vmax;
     height: calc(100vh - 2vmax);
@@ -54,6 +54,8 @@
   #app.completed {
     border-color: color(main);
     color: color(main);
+    justify-content: flex-start;
+    align-items: flex-start;
     #nav.completed {
       border-color: color(main);
     }
