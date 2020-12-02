@@ -2121,7 +2121,7 @@ const hexagrams = [
         },
         "book": {
             "says": "Your fundamental nature has not changed. It is as innocent as the day you were born. If you lose touch with this inner sense, what will become of you?",
-            "sees": "you like a benign ruler\ngrounded in your true nature\nfill of virtue\noverflowing with kindness",
+            "sees": "you like a benign ruler\ngrounded in your true nature\nfull of virtue\noverflowing with kindness",
             "suggests": "being true to yourself\nyou can't go wrong\nexpecting the unexpected\nyou're not taken by surprise\nbeing attuned to the times\nfollowing your better instincts\nyou bring good things to life\nlife brings good things to you"
         }
     },
@@ -4246,7 +4246,7 @@ const hexagrams = [
         },
         "book": {
             "says": "Now you're cooking! Like a ceremonial vessel that serves to nourish the people, you play a central role in the tribe.",
-            "sees": "you like a cauldron\nfill of nourishment\nyou're not too high\nyou're not too low\n your position is perfect for you",
+            "sees": "you like a cauldron\nfull of nourishment\nyou're not too high\nyou're not too low\n your position is perfect for you",
             "suggests": "contemplate the cauldron\nthe cooking vessel at the heart\nof ancient Chinese society\nan object of great beauty\nserving the practical purpose of cooking\nwhile standing as a symbol\na sacred vessel in which to offer\nthe fruits of your labors to the gods\nwhat you offer to the people of the world\nwith sincerity and reverence\nwill bring you good fortune and success"
         }
     },

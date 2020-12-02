@@ -24,9 +24,11 @@
 </template>
 <script>
   import iChingHexagram from '@/components/Hexagram'
-  import { mapGetters } from 'vuex'
+  import { uniqueId } from 'lodash'
+  import { mapGetters, mapActions } from 'vuex'
   export default {
       name: 'result',
+      props: ['q'],
       components: {
         iChingHexagram
       },
@@ -38,6 +40,7 @@
       },
       computed: {
           ...mapGetters([
+              'color',
               'hexagram',
               'lines'
           ]),
@@ -47,6 +50,9 @@
           }
       },
       methods: {
+          ...mapActions([
+              'resolveHexagramQuery'
+          ]),
           doSomethingWithChangingValue ({ index }) {
               if (this.changingLineToggled && this.changingLineIndex === index) {
                   this.changingLineToggled = !this.changingLineToggled
@@ -61,7 +67,34 @@
       },
       beforeRouteEnter (to, from, next) {
           return next(vm => {
-              return (vm.hexagram === undefined) ? vm.$router.push({name: 'introduction'}) : true
+              // TODO: if route has query, we'll pull up the reading in question (if possible)
+              if (vm.$route.query.q !== undefined) {
+                  // Follows convention 0,1,1,0,1,0.
+                  //    . for changing, comma-separated 1s (yang/solid) and 0s (yin/broken)
+                  let qA = vm.$route.query.q.split(",")
+                  return vm.resolveHexagramQuery(qA.map((l) => {
+                      let _l = {
+                          id: uniqueId('line_'),
+                          changing: l.endsWith('.')
+                      }
+                      _l.value = parseInt(_l.changing ? l.slice(0, -1) : l)
+                      return _l
+                  }))
+              }
+              if (vm.hexagram === undefined) return vm.$router.push({name: 'introduction'})
+              else {
+                  return vm.$router.replace({
+                      name: 'result',
+                      query: {
+                          q: vm.lines.map(line => {
+                              return line.changing
+                                  ? line.value + '.'
+                                  : line.value.toString().join(',')
+                          }),
+                          color: vm.color
+                      }
+                  })
+              }
           })
       }
   }

@@ -40,7 +40,7 @@ function delay(fn, t) {
 
 let _yarrowStalksCount = 50
 const _initialState = {
-    color: 'blue',
+    color: '#000000',
     initialized: false,
     dividing: false,
     sequence: [],
@@ -98,11 +98,11 @@ const actions = {
                 .map(t => Color(t.color))
             _color = _matchTrigrams.reduce((acc, c) => acc.mix(c, 1 / _matchTrigrams.length), _color)
         }
-        // TODO: #app.style.setProperty('--color-main', ##NEW COLOR)
         _root.style.setProperty('--color-main', _color.hex())
         return commit('SET_COLOR', _color.hex())
     },
     resetStalks({commit}) {
+        commit('SET_COLOR', {color: _initialState.color})
         return commit('RESET_STALKS')
     },
     removeObserver({commit}) {
@@ -234,6 +234,14 @@ const actions = {
                 commit('RESET_STALKS_CONTINUING')
                 commit('LINE_DIVIDING')
             }, 250)
+    },
+    resolveHexagramQuery ({state, commit, dispatch}, lines) {
+        if (state.lines.length === 6) return
+        lines.forEach(line => {
+            commit('LINE_ADD', line)
+            commit('SEQUENCE_ADD', line.value)
+            dispatch('setColor')
+        })
     }
 }
 const mutations = {
