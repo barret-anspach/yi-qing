@@ -72,7 +72,7 @@
                   // Follows convention 0,1,1,0,1,0.
                   //    . for changing, comma-separated 1s (yang/solid) and 0s (yin/broken)
                   let qA = vm.$route.query.q.split(",")
-                  return vm.resolveHexagramQuery(qA.map((l) => {
+                  vm.resolveHexagramQuery(qA.map((l) => {
                       let _l = {
                           id: uniqueId('line_'),
                           changing: l.endsWith('.')
@@ -80,6 +80,7 @@
                       _l.value = parseInt(_l.changing ? l.slice(0, -1) : l)
                       return _l
                   }))
+                return vm.$router.replace({...vm.$route, query: {...vm.$route.query, color: vm.color}});
               }
               if (vm.hexagram === undefined) return vm.$router.push({name: 'introduction'})
               else {
@@ -89,8 +90,8 @@
                           q: vm.lines.map(line => {
                               return line.changing
                                   ? line.value + '.'
-                                  : line.value.toString().join(',')
-                          }),
+                                  : line.value.toString()
+                          }).join(','),
                           color: vm.color
                       }
                   })

@@ -2163,7 +2163,7 @@ const hexagrams = [
             },
             {
                 "line": 4,
-                "meaning": "By not overreacting, you diminish the power of dissension. By remaining cal you can diffuse the tension that agitated people tend to create.",
+                "meaning": "By not overreacting, you diminish the power of dissension. By remaining calm you can diffuse the tension that agitated people tend to create.",
                 "_id": {
                     "$oid": "5797be774703d0600251696c"
                 }
