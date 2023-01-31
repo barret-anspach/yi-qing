@@ -56,9 +56,7 @@ export const assignConstant = data => state =>
 
 // remove item from list
 export const omitFromList = key => (state, item) => {
-    window.console.log('omitFromList key\t%s,\nitem:\n', key, item)
     const index = state[key].indexOf(item)
-    window.console.log('omitFromList index:\n', index)
     if (index > -1) state[key].splice(index, 1)
 }
 
@@ -102,7 +100,6 @@ export const extendRecordInList = (key, idKey = 'id', valKey) =>
 // add or replace a record in a list
 export const replaceRecordInList = (key, idKey = 'id', valKey) =>
     (state, data) => {
-        console.log('data', data)
         const id = data[idKey]
         const val = valKey ? data[valKey] : data
         const index = state[key].findIndex(x => x[idKey] === id)
