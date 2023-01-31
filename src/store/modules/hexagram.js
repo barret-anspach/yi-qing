@@ -2312,7 +2312,7 @@ const hexagrams = [
             },
             {
                 "line": 1,
-                "meaning": "When you're not overloaded and yo are content with your lot, extraordinary things can happen. Like new growth on an old tree, you can experience the vitality of youth all over again.",
+                "meaning": "When you're not overloaded and you are content with your lot, extraordinary things can happen. Like new growth on an old tree, you can experience the vitality of youth all over again.",
                 "_id": {
                     "$oid": "5797be774703d0600251697f"
                 }
